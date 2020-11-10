@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--){
+	    int m,x,y;
+	    cin>>m>>x>>y;
+	    int house[m];
+	    for(int i=0;i<m;i++){
+	        cin>>house[i];
+	    }
+	    int temp = x*y;
+	    int res = 0;
+	    bool visited[101] = {false};
+	    for(int i=0;i<m;i++){
+	        int temp1 = house[i]-temp;
+	        int temp2 = house[i]+temp;
+	        if(temp1 < 0){
+	            temp1 = 1;
+	        }
+	        if(temp2 > 100){
+	            temp2 = 100;
+	        }
+	        for(int i=temp1;i<=temp2;i++){
+	            visited[i] = true;
+	        }
+	    }
+	    for(int i=1;i<101;i++){
+	        if(!visited[i]){
+	            res++;
+	        }
+	    }
+	    cout<<res<<endl;
+	}
+	return 0;
+}
